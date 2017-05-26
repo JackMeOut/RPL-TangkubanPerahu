@@ -14,7 +14,12 @@ namespace Fungus
     /// </summary>
     public class SaveMenu : MonoBehaviour 
     {
-        [Tooltip("The string key used to store save game data in Player Prefs. If you have multiple games defined in the same Unity project, use a unique key for each one.")]
+		[Tooltip("Centang Buat Project Sangkuriang.")]
+		[SerializeField] bool Sangkuriang = false;
+		[Tooltip("GameManajer Buat Project Sangkuriang.")]
+		[SerializeField] GameObject ManajerSangkuriang;
+
+		[Tooltip("The string key used to store save game data in Player Prefs. If you have multiple games defined in the same Unity project, use a unique key for each one.")]
         [SerializeField] protected string saveDataKey = FungusConstants.DefaultSaveDataKey;
 
         [Tooltip("Automatically load the most recently saved game on startup")]
@@ -240,6 +245,11 @@ namespace Fungus
                 PlayClickSound();
                 saveManager.Load(saveDataKey);
             }
+			/*
+			if (Sangkuriang) {
+				ManajerSangkuriang.GetComponent<ManajerKarakter> ().MaenYuk ();
+			}
+			*/
         }
 
         /// <summary>
@@ -293,6 +303,11 @@ namespace Fungus
             }
 
             SceneManager.LoadScene(saveManager.StartScene);
+			/*
+			if (Sangkuriang) {
+				ManajerSangkuriang.GetComponent<ManajerKarakter> ().MaenYuk ();
+			}
+			*/
         }
 
         #endregion

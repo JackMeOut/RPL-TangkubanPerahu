@@ -9,6 +9,8 @@ public class ManajerKarakter : MonoBehaviour {
 	[SerializeField] Text TextSTR,TextINT,TextCHA,TextLCK,TextAllocation;
 	[SerializeField] int PointSTR,PointINT,PointCHA,PointLCK,PointAlokasi;
 	[SerializeField] int MaxSTR,MaxINT,MaxCHA,MaxLCK,MaxPointAlokasi;
+	[SerializeField] GameObject CanvasGaBolehRusak;
+	bool LagiMaen = false;
 	// Use this for initialization
 	void Awake () {
 		TextSTR.text = PointSTR.ToString ();
@@ -16,14 +18,18 @@ public class ManajerKarakter : MonoBehaviour {
 		TextCHA.text = PointCHA.ToString ();
 		TextLCK.text = PointLCK.ToString ();
 		TextAllocation.text = PointAlokasi.ToString ();
+		//DontDestroyOnLoad(this);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (LagiMaen) {
+			MaenYuk ();
+		}
 	}
 	public void MaenYuk(){
 		CanvasPilihKarakter.SetActive (false);
+		LagiMaen = true;
 	}
 	public void StrPlus(){
 		if (PointAlokasi > 0) {
